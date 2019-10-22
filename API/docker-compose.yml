@@ -2,6 +2,13 @@
 
 version: '2'
 services:
+  sonar:
+    container_name: sonarqube
+    image: sonarqube:latest
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+
   hubbledb:
     container_name: hubbledb
     image: 'mongo:latest'
@@ -26,7 +33,7 @@ services:
       - "6725:3000"
     environment:
       - NODE_ENV=hml
-    command: ["npm","start", ]
+    command: bash -c "npm run seed && npm run start"
     networks:
       - hubble-network
 
