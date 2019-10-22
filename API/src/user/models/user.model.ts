@@ -1,6 +1,7 @@
 import { EventModel } from './../../event/models/event.model';
 export class UserModel{
     constructor(
+        public _id: string,
         public id: string,
         public firstName: string,
         public lastName: string,

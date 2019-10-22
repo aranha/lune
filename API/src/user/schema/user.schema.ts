@@ -4,6 +4,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 const typeRole = ['Admin', 'User'];
 
 export const UserSchema = new mongoose.Schema({
+    _id: { type: mongoose.Schema.ObjectId, auto: true },
     role: {
         type: String,
         default: typeRole[1],

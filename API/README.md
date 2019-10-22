@@ -73,3 +73,19 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
   Nest is [MIT licensed](LICENSE).
+
+### Sonar
+- Create the instance of the container:
+```bash
+docker create --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+```
+
+- Start the container:
+```bash
+docker start sonarqube
+```
+
+- Run sonarqube:
+```bash
+yarn sonar
+```
