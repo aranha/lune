@@ -74,22 +74,16 @@ export class UserService {
   }
 
   async updateConfirmar(idUser: string, idEvent: string): Promise<UserModel> {
-    console.log('Chegou aqui');
     var user = await this.findOneById(idUser);
     const event = await this.eventService.getEventById(idEvent);
-    console.log(event + ' evento objeto');
     const convertido = Types.ObjectId(idEvent);
-    console.log(event.hours + ' horas do evento');
-    console.log(user.hours + ' horas complementares do usuário');
     var index = user.participatedEvents.indexOf(convertido);
     if (index > -1) {
       user.hours -= event.hours;
-      console.log(user.hours + 'horas depois da confirmação');
       user.participatedEvents.splice(index, 1);
     }
     else {
       user.hours += event.hours;
-      console.log(user.hours + 'horas depois da confirmação');
       user.participatedEvents.push(convertido);
     }
 

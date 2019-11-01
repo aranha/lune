@@ -1,6 +1,7 @@
 import { CategoryModel } from './category.model';
 import { TagModel } from './tag.model';
 import { UserModel } from 'src/user/models/user.model';
+import { FeedbackModel } from './feedback.model';
 export class EventModel {
     public id: string;
     public status: string;
@@ -22,6 +23,7 @@ export class EventModel {
         city: string;
         state: string;
     };
+    public feedback: FeedbackModel[];
     public startDate: string;
     public startHour: string;
     public endDate: string;

@@ -1,4 +1,5 @@
 import { EventModel } from './../../event/models/event.model';
+import { FeedbackModel } from 'src/event/models/feedback.model';
 export class UserModel {
     constructor(
         public _id: string,
@@ -14,5 +15,6 @@ export class UserModel {
         public favoritedEvents: EventModel[],
         public participatedEvents: EventModel[],
         public createdEvents: EventModel[],
+        public feedback: FeedbackModel[]
     ) { }
 }

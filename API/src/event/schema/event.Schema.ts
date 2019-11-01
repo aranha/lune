@@ -106,6 +106,10 @@ export const EventSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
+    feedback: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Feedback'
+    }],
     createdAt: {
         type: Date,
         default: Date.now,
@@ -114,6 +118,7 @@ export const EventSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+
 },
     {
         toJSON: {
