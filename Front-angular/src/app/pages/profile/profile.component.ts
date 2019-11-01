@@ -39,11 +39,11 @@ export class ProfileViewComponent implements OnInit {
     categories.forEach(element => {
       var aux = true;
       userCategories.forEach(elementToCompare => {
-        if(element.title == elementToCompare.title){
+        if (element.title == elementToCompare.title) {
           aux = false;
         }
       })
-      if(aux){
+      if (aux) {
         result.push(element);
       }
     })
