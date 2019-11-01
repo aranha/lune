@@ -31,6 +31,10 @@ export const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    hours: {
+        type: Number,
+        default: 0,
+    },
     interestCategories: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -64,12 +68,12 @@ export const UserSchema = new mongoose.Schema({
         default: Date.now,
     },
 },
-{
-    toJSON: {
-      versionKey: false,
-      virtuals: true,
-    },
-  });
+    {
+        toJSON: {
+            versionKey: false,
+            virtuals: true,
+        },
+    });
 UserSchema.plugin(uniqueValidator);
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

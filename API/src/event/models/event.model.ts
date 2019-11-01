@@ -10,18 +10,18 @@ export class EventModel {
     public vacancies: number;
     public category: CategoryModel;
     public tag: TagModel;
-    public hours: string;
+    public hours: number;
     public link: string;
     public picture: String;
     public address: {
-         street: string;
-         number: number;
-         complements: string;
-         zipCode: number;
-         district: string;
-         city: string;
-         state: string;
-     };
+        street: string;
+        number: number;
+        complements: string;
+        zipCode: number;
+        district: string;
+        city: string;
+        state: string;
+    };
     public startDate: string;
     public startHour: string;
     public endDate: string;

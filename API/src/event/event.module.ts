@@ -13,11 +13,12 @@ import { UserModule } from 'src/user/user.module';
 
 @Module({
     imports: [MongooseModule.forFeature([
-        {name: 'Event', schema: EventSchema},
-        {name: 'Category', schema: CategorySchema},
-        {name: 'Tag', schema: TagSchema},
+        { name: 'Event', schema: EventSchema },
+        { name: 'Category', schema: CategorySchema },
+        { name: 'Tag', schema: TagSchema },
     ]), UserModule],
     controllers: [EventController, TagController, CategoryController],
     providers: [EventService, TagService, CategoryService],
+    exports: [EventService]
 })
-export class EventModule {}
+export class EventModule { }

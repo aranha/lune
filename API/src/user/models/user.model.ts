@@ -1,5 +1,5 @@
 import { EventModel } from './../../event/models/event.model';
-export class UserModel{
+export class UserModel {
     constructor(
         public _id: string,
         public id: string,
@@ -8,10 +8,11 @@ export class UserModel{
         public phoneNumber: string,
         public email: string,
         public password: string,
+        public hours: number,
         public role: string,
         public interestCategories: string[],
         public favoritedEvents: EventModel[],
         public participatedEvents: EventModel[],
         public createdEvents: EventModel[],
-    ) {}
+    ) { }
 }

@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-const typeStatus: string [] = ['aprovado', 'rejeitado', 'pendente'];
+const typeStatus: string[] = ['aprovado', 'rejeitado', 'pendente'];
 
 export const EventSchema = new mongoose.Schema({
     status: {
@@ -17,24 +17,24 @@ export const EventSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-     category: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: 'Category',
-         required: true,
-     },
-     tag: [{
-         type: mongoose.Schema.Types.ObjectId,
-         ref: 'Tag',
-         required: true,
-     }],
-     vacancies: {
-         type: Number,
-         required: true
-     },
-     link: {
-         type: String,
-         required: true
-     },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true,
+    },
+    tag: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tag',
+        required: true,
+    }],
+    vacancies: {
+        type: Number,
+        required: true
+    },
+    link: {
+        type: String,
+        required: true
+    },
     picture: {
         type: String,
         required: true
@@ -57,7 +57,7 @@ export const EventSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    observation:{
+    observation: {
         type: String,
     },
     price: {
@@ -65,7 +65,7 @@ export const EventSchema = new mongoose.Schema({
         required: true,
     },
     hours: {
-        type: String,
+        type: Number,
         required: true,
     },
     address: {
@@ -115,12 +115,12 @@ export const EventSchema = new mongoose.Schema({
         default: Date.now,
     },
 },
-{
-    toJSON: {
-      versionKey: false,
-      virtuals: true,
-    },
-  });
+    {
+        toJSON: {
+            versionKey: false,
+            virtuals: true,
+        },
+    });
 
 const Event = mongoose.model('Event', EventSchema);
 module.exports = Event;
