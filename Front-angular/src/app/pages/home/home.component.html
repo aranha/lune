@@ -3,7 +3,7 @@
   <p class="home_title">Encontre um universo de eventos acadêmios com a Lunne</p>
   <mat-form-field fxFlex="40%" class="home_filter">
     <input matInput type="text" (keyup)="setFilteredItems($event.target.value)"
-    placeholder="Pesquise por nome, tipo  ou assunto do evento">
+      placeholder="Pesquise por nome, tipo  ou assunto do evento">
   </mat-form-field>
 </div>
 
@@ -14,15 +14,12 @@
   <swiper>
     <div class="swiper-slide" *ngFor="let item of favorited_items">
       <mat-card>
-          <img src="http://placehold.it/400x300"
-          class="md-card-image mat-card-lg-image"
-          alt="image caption"
-          [routerLink]="['/event', item._id]"
-          />
-          <div class="card-text">
-            <mat-card-title>{{item.title}}</mat-card-title>
-            <mat-card-subtitle>{{item.description |slice:0:50}}...</mat-card-subtitle>
-          </div>
+        <img src="http://placehold.it/400x300" class="md-card-image mat-card-lg-image" alt="image caption"
+          [routerLink]="['/event', item._id]" />
+        <div class="card-text">
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>{{item.description |slice:0:50}}...</mat-card-subtitle>
+        </div>
       </mat-card>
       <a href="#"></a>
     </div>
@@ -36,15 +33,12 @@
   <swiper>
     <div class="swiper-slide" *ngFor="let item of items">
       <mat-card>
-          <img src="http://placehold.it/400x300"
-          class="md-card-image mat-card-lg-image"
-          alt="image caption"
-          [routerLink]="['/event', item.id]"
-          />
-          <div class="card-text">
-            <mat-card-title>{{item.title}}</mat-card-title>
-            <mat-card-subtitle>{{item.description | slice:0:50}}...</mat-card-subtitle>
-          </div>
+        <img src="http://placehold.it/400x300" class="md-card-image mat-card-lg-image" alt="image caption"
+          [routerLink]="['/event', item.id]" />
+        <div class="card-text">
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>{{item.description | slice:0:50}}...</mat-card-subtitle>
+        </div>
       </mat-card>
       <a href="#"></a>
     </div>
