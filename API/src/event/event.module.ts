@@ -9,7 +9,7 @@ import { EventService } from './services/event.service';
 import { EventController } from './controllers/event.controller';
 import { Module } from '@nestjs/common';
 import { CategoryController } from './controllers/category.controller';
-import { UserModule } from 'src/user/user.module';
+import { UserModule } from './../user/user.module';
 
 @Module({
     imports: [MongooseModule.forFeature([

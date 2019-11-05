@@ -3,8 +3,8 @@ import { JwtService } from '@nestjs/jwt';
 import { Injectable } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { JwtPayload, AuthUser } from './interfaces/jwt-payload.interface';
-import { UserModel } from 'src/user/models/user.model';
-import { UserModule } from 'src/user/user.module';
+import { UserModel } from './../user/models/user.model';
+import { UserModule } from './../user/user.module';
 const crypto = require('crypto');
 
 @Injectable()
