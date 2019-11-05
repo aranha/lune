@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import {MongooseModule} from '@nestjs/mongoose';
 import { EventModule } from './event/event.module';
 import Environment  from './enviroments';
-import { UserModule } from 'src/user/user.module';
+import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({

@@ -4,7 +4,7 @@ import { EventModel } from './../models/event.model';
 import { Get, Controller, Post, Body, Res, Query, Param, Delete, Put } from '@nestjs/common';
 import { EventSchema } from '../schema/event.Schema';
 import { async } from 'rxjs/internal/scheduler/async';
-import { UserService } from 'src/user/user.service';
+import { UserService } from './../../user/user.service';
 
 @Controller('event')
 export class EventController {
