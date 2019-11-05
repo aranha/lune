@@ -14,14 +14,6 @@ export const FeedbackSchema = new mongoose.Schema({
         ref: 'User',
         require: true,
     },
-    like: {
-        type: Number,
-        default: 0
-    },
-    dislike: {
-        type: Number,
-        default: 0
-    },
 },
     {
         toJSON: {

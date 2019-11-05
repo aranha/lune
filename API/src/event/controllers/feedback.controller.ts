@@ -15,34 +15,4 @@ export class FeedbackController {
 
         }
     }
-    @Put('like/:idEvent/:idFeedback')
-    async postLike(@Param('idEvent') idEvent: string, @Param('idFeeeback') idFeedback: string, @Res() res): Promise<FeedbackModel> {
-        try {
-            const event = await this.eventService.getEventById(idEvent);
-            const feedbacks = event.feedback;
-            feedbacks.filter(feedback => {
-                if (feedback.id == idFeedback) {
-                    feedback.like++;
-                }
-            })
-
-        } catch (e) {
-            return res.status(500).json(e);
-        }
-    }
-    @Put('dislike/:idEvent/:idFeedback')
-    async postDislike(@Param('idEvent') idEvent: string, @Param('idFeeeback') idFeedback: string, @Res() res): Promise<FeedbackModel> {
-        try {
-            const event = await this.eventService.getEventById(idEvent);
-            const feedbacks = event.feedback;
-            feedbacks.filter(feedback => {
-                if (feedback.id == idFeedback) {
-                    feedback.dislike++;
-                }
-            })
-        } catch (e) {
-            return res.status(500).json(e);
-        }
-
-    }
 }

@@ -5,6 +5,4 @@ export class FeedbackModel {
     public text: string;
     public feedbackBy: UserModel;
     public createdAt: string;
-    public like: number;
-    public dislike: number;
 }
