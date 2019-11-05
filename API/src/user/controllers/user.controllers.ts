@@ -1,10 +1,6 @@
 import { UserModel } from './../models/user.model';
 import { UserService } from './../user.service';
-import { Model, Types } from 'mongoose';
 import { Get, Controller, Post, Body, Res, Param, Put } from '@nestjs/common';
-import { async } from 'rxjs/internal/scheduler/async';
-import { CategorySchema } from 'src/event/schema/category.schema';
-import { EventService } from 'src/event/services/event.service';
 
 @Controller('user')
 export class UserController {

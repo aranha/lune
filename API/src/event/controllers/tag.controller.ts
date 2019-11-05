@@ -1,6 +1,5 @@
 import { TagModel } from './../models/tag.model';
 import { TagService } from './../services/tag.service';
-import { Model } from 'mongoose';
 import { Get, Controller, Post, Body, Res, Delete, Param } from '@nestjs/common';
 
 @Controller('tag')
@@ -31,7 +30,7 @@ export class TagController {
     async remove(@Param('id') id: string, @Res() res) {
         try {
             this.service.deleteTagByObjectId(id);
-            return res.status(200).json({message:'Tag deletada'})
+            return res.status(200).json({ message: 'Tag deletada' })
         } catch (e) {
             return res.status(500).json(e);
         }

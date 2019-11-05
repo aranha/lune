@@ -59,10 +59,6 @@ export const UserSchema = new mongoose.Schema({
             ref: 'Event',
         },
     ],
-    feedback: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Feedback'
-    }],
     createdAt: {
         type: Date,
         default: Date.now,

@@ -1,15 +1,12 @@
-import { CategorySchema } from './../schema/category.schema';
-
-import { TagModel } from './../models/tag.model';
-import { CategoryModel } from './../models/category.model';
 import { EventModel } from './../models/event.model';
-import { InjectModel } from '@nestjs/mongoose';
+import { InjectModel, MongooseModule } from '@nestjs/mongoose';
 import { Injectable, Body, Res } from '@nestjs/common';
 import { Model, Types } from 'mongoose';
+import { FeedbackModel } from '../models/feedback.model';
 
 @Injectable()
 export class EventService {
-    constructor(@InjectModel('Event') private readonly model: Model<EventModel>) { }
+    constructor(@InjectModel('Event') private readonly model: Model<EventModel>, @InjectModel('Feedback') private readonly feedbackModel: Model<FeedbackModel>) { }
 
     async get(): Promise<EventModel[]> {
         return await this.model.find().exec();
@@ -21,6 +18,19 @@ export class EventService {
     async create(model: EventModel): Promise<EventModel> {
         const event = new this.model(model);
         return await event.save();
+    }
+    async createFeedback(feedbackModel: FeedbackModel, idEvent: string): Promise<EventModel> {
+        const eventIdaux = JSON.stringify(idEvent);
+        const eventId = JSON.parse(eventIdaux);
+        const feedback = new this.feedbackModel(feedbackModel);
+        await feedback.save();
+        const feedbackId = JSON.stringify(feedback);
+        const feedbackParse = JSON.parse(feedbackId);
+        const feedbackMongo = Types.ObjectId(feedbackParse.id)
+        const event = await this.getEventById(eventId.idEvent);
+        event.feedback.push(feedbackMongo);
+        await this.model.findOneAndUpdate({ _id: eventId.idEvent }, event).exec();
+        return event;
     }
 
     async update(model: EventModel, id: string): Promise<EventModel> {
@@ -59,13 +69,30 @@ export class EventService {
                 'as': 'app_doc'
             }
         }, {
-            '$lookup': {
-                'from': 'categories',
-                'localField': 'category',
+            'lookup': {
+                'from': 'feedback',
+                'localField': 'feedback',
                 'foreignField': '_id',
-                'as': 'cat_doc'
+                'as': 'feed_doc'
+
             }
         }, {
+            'lookup': {
+                'from': 'users',
+                'localField': 'feedback',
+                'foreignField': '_id',
+                'as': 'feed_doc'
+
+            }
+        },
+            {
+                '$lookup': {
+                    'from': 'categories',
+                    'localField': 'category',
+                    'foreignField': '_id',
+                    'as': 'cat_doc'
+                }
+            }, {
             '$group': {
                 '_id': '$_id',
                 'status': {
@@ -119,6 +146,13 @@ export class EventService {
                         ]
                     }
                 },
+                'feedback': {
+                    '$addToSet': {
+                        '$arrayElemAt': [
+                            '$tags_doc', 0
+                        ]
+                    }
+                },
                 'address': {
                     '$first': '$address'
                 },
@@ -164,7 +198,11 @@ export class EventService {
                 'approvedBy.createdEvents': 0,
                 'category.createdAt': 0,
                 'category.updatedAt': 0,
-                'category.__v': 0
+                'category.__v': 0, 'feedback.text': 0,
+                'feedback.createdAt': 0,
+                'feedback.createdBy': 0,
+                'feedback.like': 0,
+                'feedback.dislike': 0
             }
         }
         )
