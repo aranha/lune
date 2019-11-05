@@ -69,30 +69,13 @@ export class EventService {
                 'as': 'app_doc'
             }
         }, {
-            'lookup': {
-                'from': 'feedback',
-                'localField': 'feedback',
+            '$lookup': {
+                'from': 'categories',
+                'localField': 'category',
                 'foreignField': '_id',
-                'as': 'feed_doc'
-
+                'as': 'cat_doc'
             }
         }, {
-            'lookup': {
-                'from': 'users',
-                'localField': 'feedback',
-                'foreignField': '_id',
-                'as': 'feed_doc'
-
-            }
-        },
-            {
-                '$lookup': {
-                    'from': 'categories',
-                    'localField': 'category',
-                    'foreignField': '_id',
-                    'as': 'cat_doc'
-                }
-            }, {
             '$group': {
                 '_id': '$_id',
                 'status': {
@@ -146,13 +129,6 @@ export class EventService {
                         ]
                     }
                 },
-                'feedback': {
-                    '$addToSet': {
-                        '$arrayElemAt': [
-                            '$tags_doc', 0
-                        ]
-                    }
-                },
                 'address': {
                     '$first': '$address'
                 },
@@ -198,11 +174,7 @@ export class EventService {
                 'approvedBy.createdEvents': 0,
                 'category.createdAt': 0,
                 'category.updatedAt': 0,
-                'category.__v': 0, 'feedback.text': 0,
-                'feedback.createdAt': 0,
-                'feedback.createdBy': 0,
-                'feedback.like': 0,
-                'feedback.dislike': 0
+                'category.__v': 0
             }
         }
         )
