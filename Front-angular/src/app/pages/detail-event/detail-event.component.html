@@ -77,30 +77,22 @@
     <div style="align-content: center;">
         <b style="display: block;">Preço: {{event?.price}} reais.</b>
         <button (click)="goToLink();" class="default_button">Inscreva-se</button>
-        <button (click)="confirmar();" class="default_button"
-            *ngIf="presenca === false && logado === true">Confirmar presença</button>
-        <button (click)="confirmar();" class="default_button" *ngIf="presenca === true && logado === true"
-            style="background-color:#af031d;">Cancelar presença</button>
-    </div>
-</div>
-<div>
-    <i style="vertical-align: -5px;" class="material-icons"> school </i>
-    <span style="display: block"> {{event?.hours}} horas complementares </span>
-</div>
-<div>
-    <i style="vertical-align: -5px;" class="material-icons"> location_on </i>
-    <span style="display: block"> {{event?.address.street}},
-        {{event?.address.complements}},
-        {{event?.address.district}}, {{event?.address.city}} - {{event?.address.state}} </span>
-</div>
-
-<div class="content_box" style="margin-bottom: 50px;">
-    <div style="align-content: center;">
-        <b style="display: block;">Preço: {{event?.price}} reais.</b>
         <button (click)="confirmar();" class="default_button" *ngIf="presenca === false && logado === true">Confirmar
             presença</button>
         <button (click)="confirmar();" class="default_button" *ngIf="presenca === true && logado === true"
             style="background-color:#af031d;">Cancelar presença</button>
+    </div>
+</div>
+
+<div class="content_box" style="margin-bottom: 50px;">
+    <div style="align-content: center;" style="margin-bottom: 50px;">
+        <h4>Escreva seu comentário sobre o evento</h4>
+        <textarea class="text" *ngIf="presenca === true && logado === true" ng-model="feedBackText">
+        </textarea>
+    </div>
+    <div style="align-content: center;">
+        <button (click)="feedback();" class="default_button"
+            *ngIf="presenca === true && logado === true">Enviar</button>
     </div>
 </div>
 

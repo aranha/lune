@@ -20,19 +20,19 @@ export class EventAproveListComponent implements OnInit {
       {
         title: "Para aprovar",
         cards: {
-          events:[]
+          events: []
         }
       }
     ]
   };
   constructor(private eventService: EventsService,
-    private router: Router,) {
+    private router: Router, ) {
     const response = this.eventService.fetch_pending();
     response.subscribe(
       items => this.meuJson.tabs[0].cards.events = this.injectButton(items),
       error => console.log(error)
     )
-   }
+  }
 
   ngOnInit() {
   }
@@ -45,8 +45,8 @@ export class EventAproveListComponent implements OnInit {
   }
 
 
-  onEventCardSelected($eventCard: EventCardObject){
-    console.log('Card que chegou: ',$eventCard['id']);
-    this.router.navigate(['admin/detalhe-evento/'+$eventCard['id']])
+  onEventCardSelected($eventCard: EventCardObject) {
+    console.log('Card que chegou: ', $eventCard['id']);
+    this.router.navigate(['admin/detalhe-evento/' + $eventCard['id']], { skipLocationChange: true })
   }
 }

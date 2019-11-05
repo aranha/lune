@@ -1,6 +1,5 @@
 import { CategoryModel } from './../models/category.model';
 import { CategoryService } from './../services/category.service';
-import { Model } from 'mongoose';
 import { Get, Controller, Post, Body, Res, Delete, Param } from '@nestjs/common';
 
 @Controller('category')
@@ -31,7 +30,7 @@ export class CategoryController {
     async remove(@Param('id') id: string, @Res() res) {
         try {
             this.service.deleteCategoryByObjectId(id);
-            return res.status(200).json({message:'Categoria deletada'})
+            return res.status(200).json({ message: 'Categoria deletada' })
         } catch (e) {
             return res.status(500).json(e);
         }

@@ -57,23 +57,23 @@ export class MyEventsComponent implements OnInit, OnChanges {
       ]
     }
     await this.getConfirmedEvents(async (events) => {
-    data.tabs[0].cards['events'] =
-      await this.formatEvent(events, ActionTypesEnum.CANCEL_SUBSCRIPTION, ActionButtonTextEnum.CONFIRMED_EVENTS);
+      data.tabs[0].cards['events'] =
+        await this.formatEvent(events, ActionTypesEnum.CANCEL_SUBSCRIPTION, ActionButtonTextEnum.CONFIRMED_EVENTS);
     });
 
     await this.getPastEvents(async (events) => {
-    data.tabs[1].cards['events'] =
-      await this.formatEvent(events, ActionTypesEnum.VIEW_EVENT, ActionButtonTextEnum.PAST_EVENTS);
+      data.tabs[1].cards['events'] =
+        await this.formatEvent(events, ActionTypesEnum.VIEW_EVENT, ActionButtonTextEnum.PAST_EVENTS);
     });
 
     await this.getFavoriteEvents(async (events) => {
-    data.tabs[2].cards['events'] =
-      await this.formatEvent(events, ActionTypesEnum.REMOVE_FAV_EVENT, ActionButtonTextEnum.FAV_EVENTS);
+      data.tabs[2].cards['events'] =
+        await this.formatEvent(events, ActionTypesEnum.REMOVE_FAV_EVENT, ActionButtonTextEnum.FAV_EVENTS);
     });
 
     await this.getEventsCreatedByMe(async (events) => {
-    data.tabs[3].cards['events'] =
-      await this.formatEvent(events, ActionTypesEnum.VIEW_EVENT, ActionButtonTextEnum.CREATED_BY_ME);
+      data.tabs[3].cards['events'] =
+        await this.formatEvent(events, ActionTypesEnum.VIEW_EVENT, ActionButtonTextEnum.CREATED_BY_ME);
     });
     this.pageData = data;
   }
@@ -155,19 +155,19 @@ export class MyEventsComponent implements OnInit, OnChanges {
   private cancelSubscription(eventId: string) {
     this.eventService.cancelSubscription(eventId)
       .then(
-        async (success: HttpResponse<Object>)=> {await this.buildListingComponent()}
+        async (success: HttpResponse<Object>) => { await this.buildListingComponent() }
       );
   }
 
   private removeFromFavorites(eventId: string) {
     this.eventService.removeFromFavorites(eventId)
       .then(
-        async (success: HttpResponse<Object>) => {await this.buildListingComponent()}
+        async (success: HttpResponse<Object>) => { await this.buildListingComponent() }
       );
   }
 
   private viewEvent(eventId: string) {
-    this.router.navigateByUrl('/event/' + eventId);
+    this.router.navigateByUrl('/event/' + eventId, { skipLocationChange: true });
   }
 
 }
